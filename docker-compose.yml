@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  tests:
+    build: .
+    command: "dotnet test --logger:trx -r ${TMPDIR}"
+    volumes:
+      # share the source code for live reloading
+      - .:/code
+      # bind mount /tmp from the host to share the output of pytest
+      - type: bind
+        source: ${TMPDIR}
+        target: ${TMPDIR}
