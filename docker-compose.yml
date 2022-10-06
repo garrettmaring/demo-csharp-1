@@ -3,7 +3,7 @@ version: "3.9"
 services:
   tests:
     build: .
-    command: /bin/sh -c "dotnet test --logger:trx -r ${ENGI_TEST_RUNNER_OUTPUT_DIR}"
+    command: dotnet test --logger:trx -r ${ENGI_TEST_RUNNER_OUTPUT_DIR}
     volumes:
       # share the source code for live reloading
       - .:/code
