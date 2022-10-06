@@ -3,11 +3,11 @@ version: "3.9"
 services:
   tests:
     build: .
-    command: dotnet test --logger:trx -r /tmp
+    command: dotnet test --logger:trx -r ${ENGI_TEST_RUNNER_OUTPUT_DIR}
     volumes:
       # share the source code for live reloading
       - .:/code
       # bind mount a directory to share the output of the test runner
       - type: bind
-        source: /tmp
-        target: /tmp
+        source: ${ENGI_TEST_RUNNER_OUTPUT_DIR}
+        target: ${ENGI_TEST_RUNNER_OUTPUT_DIR}
