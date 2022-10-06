@@ -5,8 +5,6 @@ services:
     build: .
     command: dotnet test --logger:trx -r .
     volumes:
-      # share the source code for live reloading
-      # - .:/code
       # bind mount a directory to share the output of the test runner
       - type: bind
         source: .
